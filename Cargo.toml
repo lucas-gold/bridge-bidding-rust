@@ -1,0 +1,7 @@
+[package]
+name = "assign4"
+version = "0.1.0"
+authors = ["Dave Mason <dmason@ryerson.ca>"]
+edition = "2018"
+
+[dependencies]

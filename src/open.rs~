@@ -1,0 +1,44 @@
+use crate::Game;
+use crate::bid;
+pub struct Bids {
+    t1_open: (usize,char),
+    t2_open: (usize,char),
+    t1_final: (usize,char),
+    t2_final: (usize,char),
+}
+
+     pub fn opening_bid(game: Game, bids: Bids) -> Bids
+     {
+      let min_bid = lowest_bid(bids);
+      let open_suit = best_suit(game);
+      let min_points: usize = 13;
+      let index: usize = 0;
+      let points = [bid::hand_evals(game.south), bid::hand_evals(game.west), bid::hand_evals(game.north), bid::hand_evals(game.east)];
+      for i in points.iter()
+      {
+        if i >= &min_points {
+           match index {
+                 0 => bids.t1_open = (min_bid, open_suit),
+                 1 => bids.t2_open = (min_bid, open_suit),
+                 2 => bids.t1_open = (min_bid, open_suit),
+                 3 => bids.t2_open = (min_bid, open_suit),
+	         }
+        }
+        index += 1;
+      }
+      (points[0],'X')
+
+     }
+
+     fn lowest_bid(bids: Bids) -> usize
+     {
+
+
+     }
+
+     fn best_suit(game: Game) -> char
+     {
+        //5 cards or more, bid that suit
+        //bid longer and stronger of clubs or diamonds, if same, pick clubs.
+
+     }
